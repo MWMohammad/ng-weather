@@ -1,0 +1,11 @@
+<div class="tab-container" *ngIf="elements.length > 0">
+    <div class="tab" *ngFor="let element of elements; let i = index"
+         (click)="selectTab(i)" [class.active]="selectedTabIndex === i">
+        <span class="tab-title">{{ element.data.name }} ({{ element.zip }})</span>
+        <button class="close-tab" (click)="removeTab(i); $event.stopPropagation()">X</button>
+    </div>
+</div>
+
+<div *ngIf="tabTemplate && elements[selectedTabIndex]" class="tab-content">
+    <ng-container *ngTemplateOutlet="tabTemplate; context: { $implicit: elements[selectedTabIndex] }"></ng-container>
+</div>
