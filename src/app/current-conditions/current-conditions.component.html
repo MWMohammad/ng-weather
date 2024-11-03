@@ -1,10 +1,9 @@
-
 <app-tab [elements]="currentConditionsByZip()"
          (removeTabEmitter)="locationService.removeLocation($event.zip)"
          (selectTabEmitter)="selectElement($event)">
 </app-tab>
 
-<div *ngIf="getSelectedCondition() as selectedCondition" class="well flex">
+<div *ngIf="getSelectedCondition() as selectedCondition" class="well flex" (click)="showForecast(selectedCondition.zip)">
     <div>
         <h3>{{ selectedCondition.data.name }} ({{ selectedCondition.zip }})</h3>
         <h4>Current conditions: {{ selectedCondition.data.weather[0].main }}</h4>

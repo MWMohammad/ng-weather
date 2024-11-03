@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
 
 @Component({
     selector: 'app-tab',
@@ -13,17 +13,23 @@ export class TabComponent<T> {
 
     selectedTabIndex: number = 0;
 
+    constructor() {
+        const savedTab = localStorage.getItem('selectedTab');
+        this.selectedTabIndex = savedTab ? parseInt(savedTab) : 0;
+    }
+
     removeTab(index: number) {
         const elementToRemove = this.elements[index];
         this.removeTabEmitter.emit(elementToRemove);
-        this.elements.splice(index, 1);
         if (this.selectedTabIndex >= index && this.selectedTabIndex > 0) {
             this.selectedTabIndex = Math.max(0, this.selectedTabIndex - 1);
+            this.selectTab(this.selectedTabIndex);
         }
     }
 
     selectTab(index: number) {
         this.selectedTabIndex = index;
+        localStorage.setItem('selectedTab', index.toString());
         this.selectTabEmitter.emit(index);
     }
 }

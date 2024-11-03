@@ -9,19 +9,6 @@
     scrollbar-color: #ccc #f5f5f5;
 }
 
-.tab-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.tab-container::-webkit-scrollbar-track {
-    background: #f5f5f5;
-}
-
-.tab-container::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 10px;
-}
-
 .tab {
     padding: 10px 15px;
     margin-right: 5px;
@@ -65,26 +52,6 @@
 
 .close-tab:hover {
     color: #ff0000;
-}
-
-@media (max-width: 768px) {
-    .tab {
-        padding: 8px 10px;
-        font-size: 12px;
-    }
-    .tab-title {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .tab {
-        padding: 6px 8px;
-        font-size: 10px;
-    }
-    .tab-title {
-        font-size: 10px;
-    }
 }
 
 .tab-container {

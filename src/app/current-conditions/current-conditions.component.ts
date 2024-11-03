@@ -1,8 +1,8 @@
-import { Component, inject, Signal } from '@angular/core';
-import { WeatherService } from '../weather.service';
-import { LocationService } from '../location.service';
-import { Router } from '@angular/router';
-import { ConditionsAndZip } from '../conditions-and-zip.type';
+import {Component, inject, Signal} from '@angular/core';
+import {WeatherService} from '../weather.service';
+import {LocationService} from '../location.service';
+import {Router} from '@angular/router';
+import {ConditionsAndZip} from '../conditions-and-zip.type';
 
 @Component({
     selector: 'app-current-conditions',
@@ -18,7 +18,10 @@ export class CurrentConditionsComponent {
 
     selectedTab: number = 0;
 
-    constructor() {}
+    constructor() {
+        const savedTab = localStorage.getItem('selectedTab');
+        this.selectedTab = savedTab ? parseInt(savedTab) : 0;
+    }
 
     showForecast(zipcode: string) {
         this.router.navigate(['/forecast', zipcode]);
